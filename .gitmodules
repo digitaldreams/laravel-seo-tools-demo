@@ -1,0 +1,3 @@
+[submodule "packages/seo"]
+	path = packages/seo
+	url = https://github.com/digitaldreams/laravel-seo-tools.git
