@@ -29,7 +29,9 @@ class CategoryController extends Controller
      */
     public function index(Index $request)
     {
-        return view('pages.categories.index', ['records' => Category::paginate(10)]);
+        return view('pages.categories.index', [
+            'records' => Category::paginate(10),
+        ]);
     }
 
     /**
@@ -56,6 +58,8 @@ class CategoryController extends Controller
     {
         return view('pages.categories.create', [
             'model' => new Category,
+            'categories' => Category::whereNull('parent_id')->select(['id', 'title'])->get()
+
         ]);
     }
 
@@ -90,6 +94,8 @@ class CategoryController extends Controller
     {
         return view('pages.categories.edit', [
             'model' => $category,
+            'categories' => Category::whereNull('parent_id')->select(['id', 'title'])->get()
+
         ]);
     }
 

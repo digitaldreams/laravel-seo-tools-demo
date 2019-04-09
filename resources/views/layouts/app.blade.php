@@ -11,9 +11,9 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
           type="text/css"/>
-    @yield('css')
+@yield('css')
 
-    <!-- Custom styles for this template -->
+<!-- Custom styles for this template -->
     <link href="{{asset('css/dashboard.css')}}" type="text/css" rel="stylesheet">
 </head>
 <body>
@@ -47,27 +47,39 @@
             <div class="sidebar-sticky">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">
-                            <span data-feather="home"></span>
-                            Dashboard <span class="sr-only">(current)</span>
+                        <a class="nav-link active" href="{{route('home')}}">
+                            <i class="fa fa-home"></i>
+                            Home <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('categories.index')}}">
+                            <i class="fa fa-list"></i>
+                            Categories
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('tags.index')}}">
+                            <i class="fa fa-tags"></i>
+                            Tags
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('posts.index')}}">
+                            <i class="fa fa-pencil"></i>
+                            Posts
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">
-                            <span data-feather="file"></span>
-                            Orders
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <span data-feather="shopping-cart"></span>
+                            <i class="fa fa-shopping-cart"></i>
                             Products
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <span data-feather="users"></span>
-                            Customers
+                        <a class="nav-link" href="{{route('businesses.index')}}">
+                            <i class="fa fa-building"></i>
+                            Businesses
                         </a>
                     </li>
                     <li class="nav-item">
@@ -76,26 +88,26 @@
                             Reports
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <span data-feather="layers"></span>
-                            Integrations
-                        </a>
-                    </li>
+
                 </ul>
 
                 <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                    <span>Saved reports</span>
+                    <span><i class="fa fa-user"></i> {{auth()->user()->name}}</span>
                     <a class="d-flex align-items-center text-muted" href="#">
                         <span data-feather="plus-circle"></span>
                     </a>
                 </h6>
                 <ul class="nav flex-column mb-2">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <span data-feather="file-text"></span>
-                            Current month
+                        <a class="nav-link" href="{{ url('/logout') }}"
+                           onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                          <i class="fa fa-sign-out"></i>  Logout
                         </a>
+                        <form id="logout-form" action="{{ url('/logout') }}" method="POST"
+                              style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
                     </li>
 
                 </ul>
@@ -103,9 +115,7 @@
         </nav>
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-            <ul class="breadcrumb m-0 px-5 py-1">
-                @yield('breadcrumb')
-            </ul>
+
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 
                 <h1 class="h2">

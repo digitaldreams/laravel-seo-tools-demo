@@ -39,10 +39,19 @@ class Category extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function blogPosts()
+    public function posts()
     {
         return $this->hasMany(Post::class, 'category_id');
     }
 
+    /**
+     * blogPosts
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function parent()
+    {
+        return $this->belongsTo(static::class, 'parent_id');
+    }
 
 }

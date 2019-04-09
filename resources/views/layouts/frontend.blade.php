@@ -33,13 +33,8 @@
 <body>
 <nav class="site-header sticky-top py-1">
     <div class="container d-flex flex-column flex-md-row justify-content-between">
-        <a class="py-2" href="#">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor"
-                 stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mx-auto" role="img"
-                 viewBox="0 0 24 24" focusable="false"><title>Product</title>
-                <circle cx="12" cy="12" r="10"/>
-                <path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94"/>
-            </svg>
+        <a class="py-2" href="{{url('/')}}">
+            {{config('app.name')}}
         </a>
         <a class="py-2 d-none d-md-inline-block" href="{{route('posts.frontend.index')}}">
             <i class="fa fa-pencil"></i> Posts
@@ -62,36 +57,23 @@
 
 
 <footer class="container py-5">
+
     <div class="row">
         <div class="col-12 col-md">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor"
-                 stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mb-2" role="img"
-                 viewBox="0 0 24 24" focusable="false"><title>Product</title>
-                <circle cx="12" cy="12" r="10"/>
-                <path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94"/>
-            </svg>
-            <small class="d-block mb-3 text-muted">&copy; 2017-2019</small>
+            <script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async
+                    defer></script>
+            <div class="LI-profile-badge" data-version="v1" data-size="medium" data-locale="en_US"
+                 data-type="horizontal"
+                 data-theme="light" data-vanity="tuhin-bepari-29007396">
+                <a class="LI-simple-link"
+                   href='https://bd.linkedin.com/in/tuhin-bepari-29007396?trk=profile-badge'>Tuhin
+                    Bepari</a>
+            </div>
         </div>
         <div class="col-6 col-md">
-            <h5>Features</h5>
-            <ul class="list-unstyled text-small">
-                <li><a class="text-muted" href="#">Cool stuff</a></li>
-                <li><a class="text-muted" href="#">Random feature</a></li>
-                <li><a class="text-muted" href="#">Team feature</a></li>
-                <li><a class="text-muted" href="#">Stuff for developers</a></li>
-                <li><a class="text-muted" href="#">Another one</a></li>
-                <li><a class="text-muted" href="#">Last time</a></li>
-            </ul>
+
         </div>
-        <div class="col-6 col-md">
-            <h5>Resources</h5>
-            <ul class="list-unstyled text-small">
-                <li><a class="text-muted" href="#">Resource</a></li>
-                <li><a class="text-muted" href="#">Resource name</a></li>
-                <li><a class="text-muted" href="#">Another resource</a></li>
-                <li><a class="text-muted" href="#">Final resource</a></li>
-            </ul>
-        </div>
+
         <div class="col-6 col-md">
             <h5>Resources</h5>
             <ul class="list-unstyled text-small">

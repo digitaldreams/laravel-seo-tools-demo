@@ -7,6 +7,9 @@
         Create
     </li>
 @endsection
+@section('header')
+    <i class="fa fa-plus"></i> Tag
+@endsection
 @section('content')
     <div class="row">
         <div class='col-md-12'>
