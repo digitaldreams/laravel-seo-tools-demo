@@ -71,9 +71,9 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <i class="fa fa-shopping-cart"></i>
-                            Products
+                        <a class="nav-link" href="{{route('products.index')}}">
+                            <i class=" fa fa-shopping-cart"></i>
+                        Products
                         </a>
                     </li>
                     <li class="nav-item">
@@ -102,7 +102,7 @@
                         <a class="nav-link" href="{{ url('/logout') }}"
                            onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
-                          <i class="fa fa-sign-out"></i>  Logout
+                            <i class="fa fa-sign-out"></i> Logout
                         </a>
                         <form id="logout-form" action="{{ url('/logout') }}" method="POST"
                               style="display: none;">

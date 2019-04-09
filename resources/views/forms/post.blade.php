@@ -15,17 +15,6 @@
     </div>
 
     <div class="form-group">
-        <label for="status">Status</label>
-        <input type="text" class="form-control {{ $errors->has('status') ? ' is-invalid' : '' }}" name="status"
-               id="status" value="{{old('status',$model->status)}}" placeholder="" maxlength="255" required="required">
-        @if($errors->has('status'))
-            <div class="invalid-feedback">
-                <strong>{{ $errors->first('status') }}</strong>
-            </div>
-        @endif
-    </div>
-
-    <div class="form-group">
         <label for="body">Body</label>
         <textarea class="form-control {{ $errors->has('body') ? ' is-invalid' : '' }}" name="body"
                   id="body">{!! old('body',$model->body) !!}</textarea>
@@ -43,7 +32,11 @@
                 id="category_id">
             @if(isset($categories))
                 @foreach ($categories as $data)
-                    <option value="{{$data->id}}" {{$data->id==$model->category_id?'selected':''}}>{{$data->id}}</option>
+                    <optgroup label="{{$data->title}}">
+                        @foreach($data->categories as $category)
+                            <option value="{{$category->id}}" {{$category->id==$model->category_id?'selected':''}}>{{$category->title}}</option>
+                        @endforeach
+                    </optgroup>
                 @endforeach
             @endif
         </select>

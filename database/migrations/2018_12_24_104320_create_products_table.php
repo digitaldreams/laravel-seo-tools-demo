@@ -17,7 +17,6 @@ class CreateProductsTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned()->nullable();
             $table->unsignedInteger('category_id')->nullable();
-            $table->unsignedInteger('sub_category_id')->nullable();
             $table->string('name')->index();
             $table->text('description')->nullable();
             $table->string('slug')->index();

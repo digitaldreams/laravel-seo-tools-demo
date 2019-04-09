@@ -45,10 +45,15 @@ class Post extends Model
         'published_at',
     ];
 
-    /**
-     * Date time columns.
-     */
-    protected $dates = ['published_at'];
+    public static function boot()
+    {
+        parent::boot();
+        static::creating(function ($model) {
+            if (empty($model->slug)) {
+                $model->slug = str_slug($model->title);
+            }
+        });
+    }
 
     /**
      * blogCategory
@@ -88,6 +93,11 @@ class Post extends Model
     public function tags()
     {
         return $this->belongsToMany(Tag::class, 'blog_post_tag');
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
     }
 
 

@@ -60,6 +60,7 @@ class PostController extends Controller
     {
         return view('pages.posts.create', [
             'model' => new Post,
+            'categories' => Category::whereNull('parent_id')->select(['id', 'title'])->get()
         ]);
     }
 
@@ -93,7 +94,8 @@ class PostController extends Controller
     public function edit(Edit $request, Post $post)
     {
         return view('pages.posts.edit', [
-            'model' => $post
+            'model' => $post,
+            'categories' => Category::whereNull('parent_id')->select(['id', 'title'])->get()
         ]);
     }
 

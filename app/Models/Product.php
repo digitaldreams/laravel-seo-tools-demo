@@ -48,7 +48,6 @@ class Product extends Model
     protected $fillable = [
         'user_id',
         'category_id',
-        'sub_category_id',
         'name',
         'slug',
         'review',
@@ -63,14 +62,14 @@ class Product extends Model
         'sku',
     ];
 
-    /**
-     * productCategory
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function subcategory()
+    public static function boot()
     {
-        return $this->belongsTo(Category::class, 'sub_category_id');
+        parent::boot();
+        static::creating(function ($model) {
+            if (empty($model->slug)) {
+                $model->slug = str_slug($model->title);
+            }
+        });
     }
 
     /**
@@ -113,5 +112,9 @@ class Product extends Model
         return $this->morphMany(Review::class, 'reviewable');
     }
 
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 
 }
