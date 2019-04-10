@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\PhotoService;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
@@ -69,12 +70,14 @@ class PostController extends Controller
      *
      * @param  Store $request
      * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
     public function store(Store $request)
     {
         $model = new Post;
         $model->fill($request->all());
 
+        $model->photo_id = (new PhotoService(new Photo()))->save($request, 'photo')->id;
         if ($model->save()) {
             session()->flash('app_message', 'Post saved successfully');
             return redirect()->route('posts.index');

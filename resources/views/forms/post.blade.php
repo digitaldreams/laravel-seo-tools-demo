@@ -1,4 +1,4 @@
-<form action="{{isset($route)?$route:route('posts.store')}}" method="POST">
+<form action="{{isset($route)?$route:route('posts.store')}}" method="POST" enctype="multipart/form-data">
     {{csrf_field()}}
     <input type="hidden" name="_method" value="{{isset($method)?$method:'POST'}}"/>
 
@@ -15,9 +15,8 @@
     </div>
 
     <div class="form-group">
-        <label for="body">Body</label>
         <textarea class="form-control {{ $errors->has('body') ? ' is-invalid' : '' }}" name="body"
-                  id="body">{!! old('body',$model->body) !!}</textarea>
+                  id="summernote">{!! old('body',$model->body) !!}</textarea>
 
         @if($errors->has('body'))
             <div class="invalid-feedback">

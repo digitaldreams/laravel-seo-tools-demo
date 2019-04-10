@@ -26,11 +26,9 @@ class Update extends FormRequest
     {
         return [
             'title' => 'required|max:255',
-            'slug' => 'required|unique:posts,slug|max:255',
-            'status' => 'required|max:255',
+            'file' => 'nullable|image|1024',
             'body' => 'required|string',
             'category_id' => 'required|exists:categories,id|numeric',
-            'published_at' => 'nullable|date',
         ];
     }
 

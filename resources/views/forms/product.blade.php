@@ -1,4 +1,4 @@
-<form action="{{isset($route)?$route:route('products.store')}}" method="POST">
+<form action="{{isset($route)?$route:route('products.store')}}" method="POST" enctype="multipart/form-data">
     {{csrf_field()}}
     <input type="hidden" name="_method" value="{{isset($method)?$method:'POST'}}"/>
 
@@ -13,8 +13,7 @@
         @endif
     </div>
     <div class="form-group">
-        <label for="description">Description</label>
-        <textarea id="description" name="description"
+        <textarea id="summernote" name="description"
                   class="form-control {{ $errors->has('description') ? ' is-invalid' : '' }}"
                   rows="3">{{old('description',$model->description)}}</textarea>
         @if($errors->has('description'))

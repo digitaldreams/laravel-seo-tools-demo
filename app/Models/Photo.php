@@ -43,4 +43,9 @@ class Photo extends Model
     {
         return $this->belongsTo(Location::class, 'location_id');
     }
+
+    public function getThumbnail()
+    {
+        return asset('storage/' . $this->src);
+    }
 }

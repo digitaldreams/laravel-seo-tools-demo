@@ -10,6 +10,9 @@
     Edit
 </li>
 @endsection
+@section('header')
+    <i class="fa fa-plus text-muted"></i> New Product
+@endsection
 
 @section('tools')
 @can('create',App\Models\Product::class)

@@ -52,6 +52,7 @@ class Post extends Model
             if (empty($model->slug)) {
                 $model->slug = str_slug($model->title);
             }
+            $model->user_id = auth()->id();
         });
     }
 
@@ -73,6 +74,11 @@ class Post extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function photo()
+    {
+        return $this->belongsTo(Photo::class);
     }
 
     /**
