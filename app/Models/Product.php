@@ -67,7 +67,7 @@ class Product extends Model
         parent::boot();
         static::creating(function ($model) {
             if (empty($model->slug)) {
-                $model->slug = str_slug($model->title);
+                $model->slug = str_slug($model->name);
             }
         });
     }
@@ -90,6 +90,11 @@ class Product extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function image()
+    {
+        return $this->belongsTo(Photo::class, 'image_id');
     }
 
     /**

@@ -50,10 +50,13 @@
                 id="category_id">
             @if(isset($categories))
                 @foreach ($categories as $data)
-                    <option value="{{$data->id}}" {{$data->id==$model->category_id?'selected':''}}>{{$data->id}}</option>
+                    <optgroup label="{{$data->title}}">
+                        @foreach($data->categories as $category)
+                            <option value="{{$category->id}}" {{$category->id==$model->category_id?'selected':''}}>{{$category->title}}</option>
+                        @endforeach
+                    </optgroup>
                 @endforeach
             @endif
-
         </select>
         @if($errors->has('category_id'))
             <div class="invalid-feedback">

@@ -18,7 +18,7 @@
 @section('content')
     <div class="row">
         @foreach($records as $record)
-            <div class="col-sm-6">
+            <div class="col-sm-4">
                 @include('cards.product')
             </div>
         @endforeach

@@ -3,7 +3,7 @@
     <div class="card-header">
         <div class="row">
             <div class="col-sm-9">
-                <a href="{{route('posts.show',$record->slug)}}"> {{$record->title}}</a>
+               <h4> <a href="{{route('posts.show',$record->slug)}}"> {{$record->title}}</a></h4>
             </div>
             <div class="col-sm-3 text-right">
                 <div class="btn-group">
@@ -28,36 +28,5 @@
             </div>
         </div>
     </div>
-    <div class="card-block">
-        <table class="table table-bordered table-striped">
-            <tbody>
 
-            <tr>
-                <th>Title</th>
-                <td>{{$record->title}}</td>
-            </tr>
-            <tr>
-                <th>Slug</th>
-                <td>{{$record->slug}}</td>
-            </tr>
-            <tr>
-                <th>Status</th>
-                <td>{{$record->status}}</td>
-            </tr>
-            <tr>
-                <th>Category Id</th>
-                <td>{{$record->category_id}}</td>
-            </tr>
-            <tr>
-                <th>Photo Id</th>
-                <td>{{$record->photo_id}}</td>
-            </tr>
-            <tr>
-                <th>Published At</th>
-                <td>{{$record->published_at}}</td>
-            </tr>
-
-            </tbody>
-        </table>
-    </div>
 </div>

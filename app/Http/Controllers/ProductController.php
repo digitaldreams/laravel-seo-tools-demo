@@ -14,7 +14,8 @@ use App\Http\Requests\Products\Store;
 use App\Http\Requests\Products\Edit;
 use App\Http\Requests\Products\Update;
 use App\Http\Requests\Products\Destroy;
-
+use App\Services\PhotoService;
+use App\Models\Photo;
 
 /**
  * Description of ProductController
@@ -57,7 +58,7 @@ class ProductController extends Controller
      */
     public function create(Create $request)
     {
-        $categories = Category::all(['id']);
+        $categories = Category::whereNull('parent_id')->get();
 
         return view('pages.products.create', [
             'model' => new Product,
@@ -70,11 +71,13 @@ class ProductController extends Controller
      *
      * @param  Store $request
      * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
     public function store(Store $request)
     {
         $model = new Product;
         $model->fill($request->all());
+        $model->image_id = (new PhotoService(new Photo()))->save($request, 'file')->id;
 
         if ($model->save()) {
 
@@ -95,7 +98,7 @@ class ProductController extends Controller
      */
     public function edit(Edit $request, Product $product)
     {
-        $categories = Category::all(['id']);
+        $categories = Category::whereNull('parent_id')->get();
 
         return view('pages.products.edit', [
             'model' => $product,

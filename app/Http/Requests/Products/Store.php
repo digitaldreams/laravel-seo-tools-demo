@@ -25,14 +25,14 @@ class Store extends FormRequest
     public function rules()
     {
         return [
-            'sub_category_id' => 'required|exists:categories,id|numeric',
+            'category_id' => 'required|exists:categories,id|numeric',
             'name' => 'required|max:255',
+            'file' => 'required|image|max:1024',
             'description' => 'required|string',
             'model' => 'required|max:30',
             'sku' => 'required|max:100',
             'price' => 'required|numeric',
             'brand' => 'required|max:100',
-            'status' => 'required|in:pending,active,cancelled',
         ];
     }
 
