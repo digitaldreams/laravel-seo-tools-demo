@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Location;
+use App\Services\HereGeocoding;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Business;
@@ -13,7 +15,8 @@ use App\Http\Requests\Businesses\Store;
 use App\Http\Requests\Businesses\Edit;
 use App\Http\Requests\Businesses\Update;
 use App\Http\Requests\Businesses\Destroy;
-
+use App\Services\PhotoService;
+use App\Models\Photo;
 
 /**
  * Description of BusinessController
@@ -30,7 +33,7 @@ class BusinessController extends Controller
      */
     public function index(Index $request)
     {
-        return view('pages.businesses.index', ['records' => Business::paginate(10)]);
+        return view('pages.businesses.index', ['records' => Business::paginate(6)]);
     }
 
     /**
@@ -66,11 +69,19 @@ class BusinessController extends Controller
      *
      * @param  Store $request
      * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
     public function store(Store $request)
     {
         $model = new Business;
         $model->fill($request->all());
+        $model->logo_id = (new PhotoService(new Photo()))->save($request, 'logo')->id;
+        $hereGeocoding = new HereGeocoding($request->get('address'));
+        $data = $hereGeocoding->fetch()->toArray();
+        $location = new Location();
+        $location->fill($data);
+        $location->save();
+        $model->address_id = $location->id;
 
         if ($model->save()) {
 

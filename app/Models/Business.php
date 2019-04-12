@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\User;
+use Illuminate\Support\Str;
 
 /**
  * @property varchar $name name
@@ -62,6 +63,16 @@ class Business extends Model
         'video_link',
     ];
 
+    public static function boot()
+    {
+        parent::boot();
+        static::creating(function ($model) {
+            if (empty($model->slug)) {
+                $model->slug = Str::slug($model->name);
+            }
+        });
+    }
+
     /**
      * user
      *
@@ -70,6 +81,16 @@ class Business extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function logo()
+    {
+        return $this->belongsTo(Photo::class, 'logo_id');
+    }
+
+    public function address()
+    {
+        return $this->belongsTo(Location::class, 'address_id');
     }
 
     /**

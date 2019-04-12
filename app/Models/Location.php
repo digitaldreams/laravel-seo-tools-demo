@@ -38,5 +38,8 @@ class Location extends Model
         'country'
     ];
 
-
+    public function getFullAddress()
+    {
+        return $this->street;
+    }
 }

@@ -26,9 +26,10 @@ class Store extends FormRequest
     {
         return [
             'name' => 'required|max:255',
-            'website' => 'nullable|url|max:255',
-            'video_link' => 'nullable|max:255',
             'description' => 'nullable|string',
+            'logo' => 'image|required|max:1024',
+            'website' => 'url|max:255',
+            'video_link' => 'nullable|max:255',
             'general_phone' => 'nullable|max:20',
             'business_phone' => 'nullable|max:20',
             'email' => 'nullable|email|max:255',

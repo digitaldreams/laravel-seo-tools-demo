@@ -28,3 +28,8 @@ Route::group(['prefix' => 'app', 'middleware' => ['auth']], function () {
 Route::get('posts', 'Frontend\PostController@index')->name('posts.frontend.index');
 Route::get('products', 'Frontend\ProductController@index')->name('products.frontend.index');
 Route::get('businesses', 'Frontend\BusinessController@index')->name('businesses.frontend.index');
+
+Route::get('location', function () {
+    $hereGeocoding = new \App\Services\HereGeocoding('Dhaka college, New Market');
+    print_r($hereGeocoding->fetch()->response());
+});
