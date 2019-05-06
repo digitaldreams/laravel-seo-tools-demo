@@ -25,7 +25,7 @@ Route::group(['prefix' => 'app', 'middleware' => ['auth']], function () {
     Route::resource('products', 'ProductController');
     Route::resource('businesses', 'BusinessController');
 });
-Route::get('posts', 'Frontend\PostController@index')->name('posts.frontend.index');
+Route::get('posts', 'Frontend\BlogController@index')->name('posts.frontend.index');
 Route::get('products', 'Frontend\ProductController@index')->name('products.frontend.index');
 Route::get('businesses', 'Frontend\BusinessController@index')->name('businesses.frontend.index');
 

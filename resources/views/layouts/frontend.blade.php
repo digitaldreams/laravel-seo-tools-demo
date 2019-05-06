@@ -45,9 +45,14 @@
         <a class="py-2 d-none d-md-inline-block" href="{{route('businesses.frontend.index')}}">
             <i class="fa fa-building"></i> Business
         </a>
-        <a class="py-2 d-none d-md-inline-block" href="{{route('login')}}"><i class="fa fa-sign-in"></i> Login</a>
-        <a class="py-2 d-none d-md-inline-block" href="{{route('register')}}"><i class="fa fa-user-plus"></i>
-            Register</a>
+        @if(auth()->guest())
+            <a class="py-2 d-none d-md-inline-block" href="{{route('login')}}"><i class="fa fa-sign-in"></i> Login</a>
+            <a class="py-2 d-none d-md-inline-block" href="{{route('register')}}"><i class="fa fa-user-plus"></i>
+                Register</a>
+        @else
+            <a class="py-2 d-none d-md-inline-block" href="{{route('home')}}"><i
+                        class="fa fa-user"></i> {{auth()->user()->name}}</a>
+        @endif
     </div>
 </nav>
 <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
@@ -57,37 +62,7 @@
 
 <footer class="container py-5">
 
-    <div class="row">
-        <div class="col-12 col-md">
-            <script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async
-                    defer></script>
-            <div class="LI-profile-badge" data-version="v1" data-size="medium" data-locale="en_US"
-                 data-type="horizontal"
-                 data-theme="light" data-vanity="tuhin-bepari-29007396">
-                <a class="LI-simple-link"
-                   href='https://bd.linkedin.com/in/tuhin-bepari-29007396?trk=profile-badge'>Tuhin
-                    Bepari</a>
-            </div>
-        </div>
-        <div class="col-6 col-md">
-            <h5>Resources</h5>
-            <ul class="list-unstyled text-small">
-                <li><a class="text-muted" href="#">Business</a></li>
-                <li><a class="text-muted" href="#">Education</a></li>
-                <li><a class="text-muted" href="#">Government</a></li>
-                <li><a class="text-muted" href="#">Gaming</a></li>
-            </ul>
-        </div>
-        <div class="col-6 col-md">
-            <h5>About</h5>
-            <ul class="list-unstyled text-small">
-                <li><a class="text-muted" href="#">Team</a></li>
-                <li><a class="text-muted" href="#">Locations</a></li>
-                <li><a class="text-muted" href="#">Privacy</a></li>
-                <li><a class="text-muted" href="#">Terms</a></li>
-            </ul>
-        </div>
-    </div>
+
 </footer>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
