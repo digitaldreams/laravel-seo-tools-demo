@@ -17,7 +17,7 @@ class BlogController extends Controller
         $posts = Post::where('status', Post::STATUS_ACTIVE)->paginate(6);
         return view('pages.blog.index', [
             'firstPost' => $posts->shift(),
-            'records' => $posts
+            'posts' => $posts
         ]);
     }
 
