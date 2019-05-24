@@ -48,7 +48,7 @@
 
     <div class="form-group">
         <label for="photo">Photo </label>
-        <input type="file" name="photo" accept="image/*" required>
+        <input type="file" name="photo" accept="image/*" {{empty($model->id)?'required':''}}>
 
         @if($errors->has('photo'))
             <div class="invalid-feedback">
@@ -56,6 +56,7 @@
             </div>
         @endif
     </div>
+    @seoForm($model)
 
     <div class="form-group text-right ">
         <input type="reset" class="btn btn-default" value="Clear"/>

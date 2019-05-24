@@ -16,7 +16,7 @@ use App\Http\Requests\Posts\Store;
 use App\Http\Requests\Posts\Edit;
 use App\Http\Requests\Posts\Update;
 use App\Http\Requests\Posts\Destroy;
-
+use SEO\Seo;
 
 /**
  * Description of PostController
@@ -28,7 +28,7 @@ class PostController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @param  Index $request
+     * @param Index $request
      * @return \Illuminate\Http\Response
      */
     public function index(Index $request)
@@ -39,8 +39,8 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  Show $request
-     * @param  Post $post
+     * @param Show $request
+     * @param Post $post
      * @return \Illuminate\Http\Response
      */
     public function show(Show $request, Post $post)
@@ -48,13 +48,12 @@ class PostController extends Controller
         return view('pages.posts.show', [
             'record' => $post,
         ]);
-
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @param  Create $request
+     * @param Create $request
      * @return \Illuminate\Http\Response
      */
     public function create(Create $request)
@@ -68,7 +67,7 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  Store $request
+     * @param Store $request
      * @return \Illuminate\Http\Response
      * @throws \Exception
      */
@@ -79,6 +78,12 @@ class PostController extends Controller
 
         $model->photo_id = (new PhotoService(new Photo()))->save($request, 'photo')->id;
         if ($model->save()) {
+            Seo::save($model, route('posts.show', $model->slug), [
+                'title' => $model->title,
+                'images' => [
+                    $model->photo->getThumbnail()
+                ]
+            ]);
             session()->flash('app_message', 'Post saved successfully');
             return redirect()->route('posts.index');
         } else {
@@ -90,8 +95,8 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Edit $request
-     * @param  Post $post
+     * @param Edit $request
+     * @param Post $post
      * @return \Illuminate\Http\Response
      */
     public function edit(Edit $request, Post $post)
@@ -105,8 +110,8 @@ class PostController extends Controller
     /**
      * Update a existing resource in storage.
      *
-     * @param  Update $request
-     * @param  Post $post
+     * @param Update $request
+     * @param Post $post
      * @return \Illuminate\Http\Response
      */
     public function update(Update $request, Post $post)
@@ -114,6 +119,12 @@ class PostController extends Controller
         $post->fill($request->all());
 
         if ($post->save()) {
+            Seo::save($post, route('posts.show', $post->slug), [
+                'title' => $post->title,
+                'images' => [
+                    $post->photo->getThumbnail()
+                ]
+            ]);
             session()->flash('app_message', 'Post successfully updated');
             return redirect()->route('posts.index');
         } else {
@@ -125,8 +136,8 @@ class PostController extends Controller
     /**
      * Delete a  resource from  storage.
      *
-     * @param  Destroy $request
-     * @param  Post $post
+     * @param Destroy $request
+     * @param Post $post
      * @return \Illuminate\Http\Response
      * @throws \Exception
      */

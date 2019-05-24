@@ -21,5 +21,4 @@
             </div>
         </div>
     </div>
-    <?php print_r($errors);?>
 @endSection

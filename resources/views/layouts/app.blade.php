@@ -85,9 +85,9 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <span data-feather="bar-chart-2"></span>
-                            Reports
+                        <a class="nav-link" href="{{route('seo::dashboard.index')}}">
+                            <i class="fa fa-wrench"></i>
+                            SEO
                         </a>
                     </li>
 

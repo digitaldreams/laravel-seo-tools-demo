@@ -27,7 +27,7 @@
             <div class='card'>
                 <div class="card-body">
                     @include('forms.post',[
-                    'route'=>route('posts.update',$model->id),
+                    'route'=>route('posts.update',$model->slug),
                     'method'=>'PUT'
                     ])
                 </div>
