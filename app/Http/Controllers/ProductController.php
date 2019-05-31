@@ -119,7 +119,7 @@ class ProductController extends Controller
         $product->fill($request->all());
 
         if ($product->save()) {
-
+            dispatch(new GenerateProductSchema($product));
             session()->flash('app_message', 'Product successfully updated');
             return redirect()->route('products.index');
         } else {
