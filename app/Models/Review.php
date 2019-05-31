@@ -35,10 +35,8 @@ class Review extends Model
      */
     protected $fillable = [
         'user_id',
-        'status',
         'reviewable_id',
         'reviewable_type',
-        'ip_address',
         'rating',
         'review'
     ];

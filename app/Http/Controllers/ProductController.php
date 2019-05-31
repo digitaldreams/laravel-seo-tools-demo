@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\GenerateProductSchema;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
@@ -27,7 +28,7 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @param  Index $request
+     * @param Index $request
      * @return \Illuminate\Http\Response
      */
     public function index(Index $request)
@@ -38,8 +39,8 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  Show $request
-     * @param  Product $product
+     * @param Show $request
+     * @param Product $product
      * @return \Illuminate\Http\Response
      */
     public function show(Show $request, Product $product)
@@ -53,7 +54,7 @@ class ProductController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @param  Create $request
+     * @param Create $request
      * @return \Illuminate\Http\Response
      */
     public function create(Create $request)
@@ -69,7 +70,7 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  Store $request
+     * @param Store $request
      * @return \Illuminate\Http\Response
      * @throws \Exception
      */
@@ -80,7 +81,7 @@ class ProductController extends Controller
         $model->image_id = (new PhotoService(new Photo()))->save($request, 'file')->id;
 
         if ($model->save()) {
-
+            dispatch(new GenerateProductSchema($model));
             session()->flash('app_message', 'Product saved successfully');
             return redirect()->route('products.index');
         } else {
@@ -92,8 +93,8 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Edit $request
-     * @param  Product $product
+     * @param Edit $request
+     * @param Product $product
      * @return \Illuminate\Http\Response
      */
     public function edit(Edit $request, Product $product)
@@ -109,8 +110,8 @@ class ProductController extends Controller
     /**
      * Update a existing resource in storage.
      *
-     * @param  Update $request
-     * @param  Product $product
+     * @param Update $request
+     * @param Product $product
      * @return \Illuminate\Http\Response
      */
     public function update(Update $request, Product $product)
@@ -130,8 +131,8 @@ class ProductController extends Controller
     /**
      * Delete a  resource from  storage.
      *
-     * @param  Destroy $request
-     * @param  Product $product
+     * @param Destroy $request
+     * @param Product $product
      * @return \Illuminate\Http\Response
      * @throws \Exception
      */

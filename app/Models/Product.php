@@ -122,4 +122,41 @@ class Product extends Model
         return 'slug';
     }
 
+    public function schemaJsonLd()
+    {
+        $parentcategory = $this->category->parent->title ?? '';
+        $subCategory = $this->category->title;
+        $data = [
+            "@context" => "http://schema.org",
+            "@type" => "Product",
+            'name' => $this->name,
+            'category' => $parentcategory . '/' . $subCategory
+        ];
+        if (!empty($this->model)) {
+            $data['model'] = $this->model;
+        }
+        if (!empty($this->sku)) {
+            $data['sku'] = $this->sku;
+        }
+        if (!empty($this->color)) {
+            $data['color'] = $this->color;
+        }
+        if (!empty($this->description)) {
+            $data['description'] = $this->description;
+        }
+        if (!empty($this->image)) {
+            $data['image'] = $this->image->getThumbnail();
+        }
+
+        if ($this->reviews()->count() > 0) {
+            $data['aggregateRating'] = [
+                "@type" => "AggregateRating",
+                'ratingValue' => $this->review,
+                'reviewCount' => $this->reviews()->count(),
+                'bestRating' => 5,
+                'worstRating' => 1
+            ];
+        }
+        return $data;
+    }
 }
