@@ -27,6 +27,7 @@ Route::group(['prefix' => 'app', 'middleware' => ['auth']], function () {
 });
 Route::get('posts', 'Frontend\BlogController@index')->name('posts.frontend.index');
 Route::get('products', 'Frontend\ProductController@index')->name('products.frontend.index');
+Route::get('products/{product}', 'Frontend\ProductController@show')->name('products.frontend.show');
 Route::get('businesses', 'Frontend\BusinessController@index')->name('businesses.frontend.index');
 
 Route::get('location', function () {

@@ -15,7 +15,7 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         return view('pages.products.frontend.index', [
-            'records' => Product::where('status', Product::STATUS_ACTIVE)->paginate(6)
+            'records' => Product::paginate(6)
         ]);
     }
 
