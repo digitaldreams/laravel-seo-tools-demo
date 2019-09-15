@@ -44,6 +44,10 @@ return [
      */
     'cache' => [
         /**
+         * file or database
+         */
+        'driver' => 'database',
+        /**
          * Do you like to serve seo tags from cache. It is highly recommended on production server.
          */
         'enable' => true,
