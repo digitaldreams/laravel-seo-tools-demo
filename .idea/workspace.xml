@@ -2,19 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a19dc06d-d7b7-47f3-acd6-065994ffbbb4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitmodules" beforeDir="false" afterPath="$PROJECT_DIR$/.gitmodules" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/seo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/seo.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Policies/Seo/ImagePolicy.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Policies/Seo/MetaTagPolicy.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Policies/Seo/PagePolicy.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Policies/Seo/SettingPolicy.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/seo" beforeDir="false" afterPath="$PROJECT_DIR$/packages/seo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/seo/src/Console/Commands/Install.php" beforeDir="false" afterPath="$PROJECT_DIR$/packages/seo/src/Console/Commands/Install.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/seo/src/Console/Commands/Uninstall.php" beforeDir="false" afterPath="$PROJECT_DIR$/packages/seo/src/Console/Commands/Uninstall.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/seo/src/Policies/SettingPolicy.php" beforeDir="false" afterPath="$PROJECT_DIR$/packages/seo/src/Policies/SettingPolicy.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/seo" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -226,8 +214,7 @@
             <path>
               <item name="seodemo" type="b2602c69:ProjectViewProjectNode" />
               <item name="seodemo" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Policies" type="462c0819:PsiDirectoryNode" />
+              <item name="packages" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -299,16 +286,15 @@
       <workItem from="1559748017156" duration="467000" />
       <workItem from="1559961441517" duration="472000" />
       <workItem from="1568488080364" duration="953000" />
-      <workItem from="1568558627181" duration="57000" />
+      <workItem from="1568558627181" duration="184000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47518000" />
+    <option name="totallyTimeSpent" value="47645000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="1003" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2571885" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
